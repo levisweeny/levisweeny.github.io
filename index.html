@@ -16,9 +16,55 @@
       #sketch.expo.no-controls {
         top: 82px;
       }
+
+      /* Add your CSS styles here */
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        /* Add more styles as needed */
+
     </style>
   </head>
   <body class="web" style="margin:0; overflow:hidden; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; position:fixed; top:0; left:0; width:400px; height:565px;">
+    <header>
+      <h1>Your Class Project</h1>
+    </header>
+
+    <div class="container">
+        <h2>About the Project</h2>
+        <p>This is where you can describe your project and what it entails. Use this space to introduce your project
+            and provide some context.</p>
+
+        <h2>Project Details</h2>
+        <p>Include any relevant details, such as the objectives, methodologies used, and key findings or outcomes of
+            your project.</p>
+
+        <h2>Project Components</h2>
+        <p>List the different components or sections of your project and provide brief descriptions or links if
+            applicable.</p>
+
+        <h2>Conclusion</h2>
+        <p>Summarize your project's main points and the significance of your work. Feel free to add any concluding
+            remarks or next steps.</p>
+    </div>
+    
     <div id="sketch" class="web" style="position:absolute;"></div>
     <div id="soft-buttons" style="display: none">
       <button id="leftButton" disabled className="arrow">
@@ -32,5 +78,9 @@
     </div>
     <div id="studio-dpad-container" style="position:absolute; width:400px; bottom:5px; height:157px; overflow-y:hidden;">
     </div>
+
+    <footer>
+      <p>&copy; 2023 Levi Sweeny</p>
+  </footer>
   </body>
 </html>
