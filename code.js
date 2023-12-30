@@ -39,7 +39,6 @@ window.preload = function () {
 var restart = null;
 var bac = null;
 var goodJob = null;
-var next1 = null;
 
 var fanSoundDetector = createSprite(1000, 300);
 fanSoundDetector.setAnimation("clear");
@@ -472,11 +471,6 @@ function restartButtonChecks(){
   restart.scale = 0.6;
   }
   
-  if (mouseIsOver(next1)){
-  next1.scale = 0.38;
-  } else {
-  next1.scale = 0.32;
-  }
   
   if (mousePressedOver(restart)){
   endCheck = 0;
@@ -484,8 +478,6 @@ function restartButtonChecks(){
   bac = null;
   restart.visible = false;
   restart = null;
-  next1.visible = false;
-  next1 = null;
   // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
   // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
   // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
@@ -512,11 +504,6 @@ function createEndScreen(){
   restart.setCollider("rectangle", 0, 0, 165, 70, 0);
   restart.dubug = false;
   restart.scale = 0.6;
-  next1 = createSprite(212, 368);
-  next1.setAnimation("next");
-  next1.scale = 0.32;
-  next1.setCollider("rectangle", 0, 0, 320, 120, 0);
-  next1.debug = false;
   
   player.x = 200;
   player.y = 200;
