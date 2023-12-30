@@ -34,7 +34,7 @@ window.preload = function () {
     }
 // -----
 
-playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+// playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
 
 var restart = null;
 var bac = null;
@@ -246,7 +246,7 @@ function draw() {
   }
 
   if (fanCheck == 1) {
-  playSound("assets/category_whoosh/animation_whoosh11.mp3", false);
+  // playSound("assets/category_whoosh/animation_whoosh11.mp3", false);
   fanCheck = 2;
   }
 
@@ -257,12 +257,12 @@ function draw() {
   //fans sound for when close
   if (player.isTouching(fanSoundDetector)){
     if (fanSoundDetectorCheck == 1) {
-    playSound("assets/category_background/large_fan.mp3", true);
+    // playSound("assets/category_background/large_fan.mp3", true);
     fanSoundDetectorCheck = 2;
     }
   } else {
     if (fanSoundDetectorCheck ==2){
-    stopSound("assets/category_background/large_fan.mp3");
+    // stopSound("assets/category_background/large_fan.mp3");
     fanSoundDetectorCheck = 1;
     }
   }
@@ -298,7 +298,7 @@ function draw() {
     byme.destroy();
     instructions.destroy();
     player.velocityY = 0;
-    playSound("assets/category_bell/hollow_bell_notification.mp3");
+    // playSound("assets/category_bell/hollow_bell_notification.mp3");
     }
   start = 2;
   }
@@ -399,11 +399,11 @@ function voidCheck(){
   player.x = 200;
   player.velocityY = 0;
   player.velocityX = 0;
-  playSound("assets/category_alerts/retro_game_health_pickup_6.mp3");
-  stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
-  playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
-  stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
-  playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+  // playSound("assets/category_alerts/retro_game_health_pickup_6.mp3");
+  // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+  // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+  // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+  // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
   }
   
 }
@@ -486,15 +486,15 @@ function restartButtonChecks(){
   restart = null;
   next1.visible = false;
   next1 = null;
-  stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
-  playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
-  stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
-  playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+  // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+  // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+  // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+  // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
   goodJob.visible = false;
   goodJob = null;
   jumps = 0;
   player.velocityY = 0;
-  playSound("assets/category_bell/vibrant_game_bell_twinkle_positive_touch_1.mp3");
+  // playSound("assets/category_bell/vibrant_game_bell_twinkle_positive_touch_1.mp3");
   checkHigh = 0;
   highYes = 0;
   }
