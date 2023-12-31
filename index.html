@@ -19,25 +19,74 @@
 
       /* Add your CSS styles here */
       body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            text-align: center; /* This centers text content within the body */
-        }
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+        /* text-align: center; This centers text content within the body */
+      }
 
-        header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+      header {
+        background-color: orange;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
 
-        .container {
-            width: 80%;
-            margin: 0 auto;
-        }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .code-section {
+        background-color: black;
+        color: white;
+        padding: 20px;
+        border-radius: 5px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: left;
+        overflow-x: auto; /* Enable horizontal scrolling if needed */
+      }
+
+/* Styles for JavaScript keywords */
+.code-section code {
+  color: whitesmoke; /* Keyword color */
+  font-weight: bold;
+}
+
+/* Styles for comments */
+.code-section code.comment {
+  color: #888;
+  font-style: italic;
+}
+
+/* Styles for strings */
+.code-section code.string {
+  color: #008000; /* String color */
+}
+
+/* Styles for numbers */
+.code-section code.number {
+  color: #CD853F; /* Number color */
+}
+
+/* Styles for function names */
+.code-section code.function {
+  color: #006699; /* Function name color */
+}
+
+/* Styles for variables */
+.code-section code.variable {
+  color: #000000; /* Variable color */
+}
+
+      footer {
+        text-align: center;
+      }
 
         /* Add more styles as needed */
 
@@ -47,18 +96,18 @@
   -->
   <body>
     <header>
-      <h1>Your Class Project</h1>
+      <h1>Levi Sweeny's Jumpi Project </h1>
     </header>
 
     <div class="container">
         <h2>About the Project</h2>
-        <p>This is where you can describe your project and what it entails. Use this space to introduce your project
-            and provide some context.</p>
+        <p>My name is Levi Sweeny. I am a student at Claire Lillienthal Middle School. I made a platformer game called 
+          Jumpi for my 8th grade Computer Science project.</p>
 
-        <h2>Project Details</h2>
-        <p>Include any relevant details, such as the objectives, methodologies used, and key findings or outcomes of
-            your project.</p>
+        <h2>About the Game</h2>
+        <p>Use ASWD keys to move Jumpi through the level and find his pancakes. The best score is the least amount of jumps to find the pancakes.</p>
         
+        <h2>Play Jumpi</h2>
         <p>   
             <!-- <div id="sketch" class="web" style="position:absolute;"></div> -->
             <div id="sketch" class="web"></div>
@@ -76,13 +125,488 @@
             </div> 
          </p>    
 
-        <h2>Project Components</h2>
-        <p>List the different components or sections of your project and provide brief descriptions or links if
-            applicable.</p>
+        <h2>Code</h2>
+        <div class="code-section">
+          <pre>
+            <code>
+  // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
 
-        <h2>Conclusion</h2>
-        <p>Summarize your project's main points and the significance of your work. Feel free to add any concluding
-            remarks or next steps.</p>
+  var restart = null;
+  var bac = null;
+  var goodJob = null;
+  
+  var fanSoundDetector = createSprite(1000, 300);
+  fanSoundDetector.setAnimation("clear");
+  fanSoundDetector.scale = 8;
+  fanSoundDetector.debug = false;
+  
+  var checkHigh = 0;
+  
+  var endCheck = 0;
+  
+  var highYes = 0;
+  
+  var fanSoundDetectorCheck = 1;
+  
+  var start = 1;
+  
+  var fanCheck = 0;
+  
+  var jumps = 0;
+  
+  var bestScore = 0;
+  
+  
+  
+  var fan1 = createSprite(1000, 300);
+  fan1.setCollider("rectangle", 0, 0, 290, 1800, 0);
+  fan1.scale = 2;
+  fan1.setAnimation("fan");
+  fan1.scale = 0.5;
+  fan1.debug = false;
+  
+  
+  
+  var bacround = createSprite(200, 200);
+  bacround.setAnimation("backround");
+  bacround.scale = 100;
+  
+  var w = createSprite(200, 200);
+  w.setAnimation("wasd");
+  w.scale = 0.3;
+  
+  var arrow1 = createSprite(1470, -500);
+  arrow1.scale = 1.2;
+  arrow1.rotation = 10;
+  arrow1.setAnimation("arrowdirection");
+  
+  var arrow2 = createSprite(1470, -580);
+  arrow2.scale = 1.2;
+  arrow2.rotation = -25;
+  arrow2.setAnimation("arrowdirection2");
+  
+  var welcome = createSprite(550, 247);
+  welcome.setAnimation("welcome");
+  
+  var thisWay = createSprite(350, 340);
+  thisWay.setAnimation("thisWay");
+  thisWay.scale = 0.26;
+  
+  var newWalls = createSprite(1280, -470);
+  newWalls.setAnimation("newWalls");
+  newWalls.scale = 0.26;
+  
+  var afan = createSprite(800, 279);
+  afan.setAnimation("afan");
+  afan.scale = 0.26;
+  
+  var player = createSprite(200, 200);
+  player.setAnimation("clear");
+  player.setAnimation("playerright");
+  player.scale = 0.15;
+  player.setCollider("rectangle", 0, 0, 250, 360, 0);
+  player.debug = false;
+  
+  var spawnplat = createSprite(200, 400);
+  spawnplat.setAnimation("spawnPlatform");
+  spawnplat.setCollider("rectangle", 0, 0, 500, 45, 0);
+  spawnplat.scale = 1.1;
+  spawnplat.debug = false;
+  
+  var spawnplatablejump = createSprite(200, 370);
+  spawnplatablejump.setAnimation("clear");
+  spawnplatablejump.scale = 6;
+  spawnplatablejump.setCollider("rectangle", 0, 0, 89, 1, 0);
+  spawnplatablejump.debug = false;
+  
+  var spawnplatbackwallcollider = createSprite(-38, 200);
+  spawnplatbackwallcollider.setAnimation("clear");
+  spawnplatbackwallcollider.setCollider("rectangle", 0, 0, 20, 1000, 0);
+  spawnplatbackwallcollider.debug = false;
+  
+  
+  
+  var firstJump = createSprite(600, 380);
+  firstJump.setAnimation("box1");
+  firstJump.scale = 0.7;
+  firstJump.setCollider("rectangle", 0, 0, 150, 70, 0);
+  firstJump.debug = false;
+  
+  var firstJumpabletojump = createSprite(600, 380);
+  firstJumpabletojump.setAnimation("clear");
+  firstJumpabletojump.setCollider("rectangle", 0, 0, 147, 75, 0);
+  firstJumpabletojump.scale = 0.7;
+  firstJumpabletojump.debug = false;
+  
+  var secondJump = createSprite(800, 340);
+  secondJump.setAnimation("box1");
+  secondJump.scale = 0.7;
+  secondJump.setCollider("rectangle", 0, 0, 150, 70, 0);
+  secondJump.debug = false;
+  
+  var secondJumpabletojump = createSprite(800, 340);
+  secondJumpabletojump.setAnimation("clear");
+  secondJumpabletojump.setCollider("rectangle",0, 0, 95, 55, 0);
+  secondJumpabletojump.debug = false;
+  
+  var platformAfterFan1 = createSprite(1350, -400);
+  platformAfterFan1.setAnimation("platformAfterFan");
+  platformAfterFan1.setCollider("rectangle", 0, 0, 390, 52, 0);
+  platformAfterFan1.debug = false;
+  
+  var platformAfterFan1able = createSprite(1350, -400);
+  platformAfterFan1able.setAnimation("clear");
+  platformAfterFan1able.setCollider("rectangle", 0, 0, 385, 55, 0);
+  platformAfterFan1able.debug = false;
+  
+  var firstwallsrightwall = createSprite(1520, -480);
+  firstwallsrightwall.setAnimation("clear");
+  firstwallsrightwall.setCollider("rectangle", 0, 0, 50, 355, 0);
+  firstwallsrightwall.debug = false;
+  
+  var firstwallsrightwalljump = createSprite(1520, -480);
+  firstwallsrightwalljump.setAnimation("clear");
+  firstwallsrightwalljump.setCollider("rectangle", 0, 0, 55, 360, 0);
+  firstwallsrightwalljump.debug = false;
+  
+  var box1 = createSprite(1350, -550);
+  box1.setAnimation("Boxes");
+  box1.setCollider("rectangle", 0, 0, 95, 79, 0);
+  box1.debug = false;
+  
+  var box1able = createSprite(1350, -550);
+  box1able.setAnimation("Boxes");
+  box1able.setCollider("rectangle", 0, -5, 95, 79, 0);
+  box1able.debug = false;
+  
+  var box2 = createSprite(1700, -680);
+  box2.setAnimation("Boxes");
+  box2.setCollider("rectangle", 0, 0, 95, 79, 0);
+  box2.debug = false;
+  
+  var box2able = createSprite(1700, -680);
+  box2able.setAnimation("Boxes");
+  box2able.setCollider("rectangle", 0, -5, 95, 79, 0);
+  box2able.debug = false;
+  
+  var pancakes = createSprite(1700, -740);
+  pancakes.setAnimation("pancakes2");
+  pancakes.setCollider("circle", 0, 0, 50);
+  pancakes.debug = false;
+  pancakes.scale = 0.5;
+  
+  //startscreen
+  var startscreenBac = createSprite(200, 200);
+  startscreenBac.setAnimation("startbac");
+  startscreenBac.scale = 250;
+  
+  var startscreenButton = createSprite(200, 200);
+  startscreenButton.setAnimation("startButton");
+  startscreenButton.setCollider("rectangle", 0, 0, 100, 50, 0);
+  startscreenButton.debug = false;
+  
+  var title = createSprite(200, 120);
+  title.setAnimation("title");
+  title.scale = 1.5;
+  
+  var instructions = createSprite(200, 280);
+  instructions.setAnimation("instructions");
+  instructions.scale = 0.7;
+  
+  var byme = createSprite(200, 350);
+  byme.setAnimation("animation_1");
+  
+  function draw() {
+    background("white");
+    
+    if (player.isTouching(pancakes) || keyWentDown("l")){
+    createEndScreen();
+    endCheck = 1;
+    }
+    if (endCheck == 1) {
+    player.x = 200;
+    player.y = 200;
+    restartButtonChecks();
+    }
+    
+    //fans
+    if (player.isTouching(fan1)){
+    player.velocityY = player.velocityY -4.2;
+      if (fanCheck == 0){
+      fanCheck = 1;
+      }
+    } else {
+    fanCheck = 0;
+    }
+  
+    if (fanCheck == 1) {
+    // playSound("assets/category_whoosh/animation_whoosh11.mp3", false);
+    fanCheck = 2;
+    }
+  
+    //fansmove
+    fan1.x = randomNumber(999, 1001);
+    fan1.y = randomNumber(299, 301);
+    
+    //fans sound for when close
+    if (player.isTouching(fanSoundDetector)){
+      if (fanSoundDetectorCheck == 1) {
+      // playSound("assets/category_background/large_fan.mp3", true);
+      fanSoundDetectorCheck = 2;
+      }
+    } else {
+      if (fanSoundDetectorCheck ==2){
+      // stopSound("assets/category_background/large_fan.mp3");
+      fanSoundDetectorCheck = 1;
+      }
+    }
+  
+    //
+    //
+    //colliders
+    colliders();
+    
+    //forstart
+    
+    startscreenButton.x = camera.x;
+    
+    startscreenButton.y = camera.y;
+    
+    if (startscreenButton.isTouching(startscreenBac)){
+    player.x = 200;
+    player.y = 200;
+    }
+    
+    
+    if (mouseIsOver(startscreenButton)){
+    startscreenButton.scale = 1.1;
+    } else {
+    startscreenButton.scale = 1;
+    }
+    
+    if (mousePressedOver(startscreenButton)){
+      if (start == 1){
+      startscreenBac.destroy();
+      startscreenButton.destroy();
+      title.destroy();
+      byme.destroy();
+      instructions.destroy();
+      player.velocityY = 0;
+      // playSound("assets/category_bell/hollow_bell_notification.mp3");
+      }
+    start = 2;
+    }
+    //
+    //
+    //
+    
+    //
+    player.velocityY = player.velocityY + 2;
+    
+    //functions
+    wasdCamera();
+    wasd();
+    voidCheck();
+    abletojumpcheck();
+    
+    
+    //
+  
+    drawSprites();
+    
+    if (endCheck == 1) {
+    drawScores();
+    }
+  }
+  
+  
+  
+  
+  
+  function colliders(){
+    player.collide(spawnplat);
+    player.collide(spawnplatbackwallcollider);
+    player.collide(firstJump);
+    player.collide(secondJump);
+    player.collide(platformAfterFan1);
+    player.collide(firstwallsrightwall);
+    player.collide(box1);
+    player.collide(box2);
+  }
+  
+  
+  function wasdCamera(){
+    camera.x = player.x;
+    
+    camera.y = player.y;
+    
+    if (keyDown("a")){
+    camera.x = player.x;
+    } else {
+      if (player.velocityX < 0){
+      camera.x = player.x;
+      }
+    }
+    
+    if (keyDown("d")){
+    camera.x = player.x;
+    } else {
+      if (player.velocityX > 0){
+      camera.x = player.x;
+      }
+    } 
+  }
+  
+  
+  function wasd(){
+    if (player.isTouching(spawnplatablejump)){
+    canJump();
+    }
+  
+    
+    if (keyDown("d")){
+    player.setAnimation("playerright");
+      if (player.velocityX < 9){
+      player.velocityX = player.velocityX + 4.5;
+      }
+    } else {
+      if (player.velocityX > 0){
+      player.velocityX = player.velocityX - 1.5;
+      }
+    }
+    
+    if (keyDown("a")){
+      //player.setAnimation("player left")
+      if (player.velocityX > -9){
+      player.velocityX = player.velocityX - 4.5;
+      }
+    } else {
+      if (player.velocityX < 0){
+      player.velocityX = player.velocityX + 1.5;
+      }
+    } 
+  }
+  
+  function voidCheck(){
+    if (player.y > 5000){
+    player.y = 200;
+    player.x = 200;
+    player.velocityY = 0;
+    player.velocityX = 0;
+    // playSound("assets/category_alerts/retro_game_health_pickup_6.mp3");
+    // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+    // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+    // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+    // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+    }
+    
+  }
+  
+  
+  
+  
+  function abletojumpcheck(){
+    if (player.isTouching(firstJumpabletojump)){
+    canJump();
+    }
+    if (player.isTouching(secondJumpabletojump)){
+    canJump();
+    }
+    if (player.isTouching(platformAfterFan1able)){
+    canJump();
+    }
+    if (player.isTouching(firstwallsrightwalljump)){
+    if (keyWentDown("w")){
+    player.velocityY = -20;
+    }
+    }
+    if (player.isTouching(box1able)){
+    canJump();
+    }
+    if (player.isTouching(box2able)){
+    canJump();
+    }
+  }
+  
+  
+  function canJump(){
+    if (keyDown("w")){
+    player.velocityY = -20;
+    jumps = jumps + 1;
+    }
+  }
+  
+  function drawScores(){
+    
+    if (bestScore == 0 || bestScore > jumps){
+    bestScore = jumps;
+    checkHigh = 1;
+    }
+    
+    fill("black");
+    textSize(25);
+    
+    text("Jumps: " + jumps, player.x - 44, player.y + 30);
+    text("Best Score: " + bestScore, 138, 190);
+    if (highYes == 1){
+    text("New Best Score!", player.x - 82, player.y + 72);
+    }
+    if (checkHigh == 1){
+    console.log("yes");
+    highYes = 1;
+    
+    checkHigh = 0;
+    }
+  }
+  
+  function restartButtonChecks(){
+    if (mouseIsOver(restart)){
+    restart.scale = 0.7;
+    } else {
+    restart.scale = 0.6;
+    }
+    
+    
+    if (mousePressedOver(restart)){
+    endCheck = 0;
+    bac.visible = false;
+    bac = null;
+    restart.visible = false;
+    restart = null;
+    // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+    // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+    // stopSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+    // playSound("assets/category_loops/vibrant_game_musical_harping_movement_loop_1.mp3");
+    goodJob.visible = false;
+    goodJob = null;
+    jumps = 0;
+    player.velocityY = 0;
+    // playSound("assets/category_bell/vibrant_game_bell_twinkle_positive_touch_1.mp3");
+    checkHigh = 0;
+    highYes = 0;
+    }
+  }
+  
+  function createEndScreen(){
+    bac = createSprite(200, 200);
+    bac.setAnimation("startbac");
+    bac.scale = 200;
+    goodJob = createSprite(200, 100);
+    goodJob.setAnimation("GoodJob");
+    goodJob.scale = 1.5;
+    restart = createSprite(210, 310);
+    restart.setAnimation("restart");
+    restart.setCollider("rectangle", 0, 0, 165, 70, 0);
+    restart.dubug = false;
+    restart.scale = 0.6;
+    
+    player.x = 200;
+    player.y = 200;
+  }
+              
+            </code>
+          </pre>
+        </div>
     </div>
 
     <footer>
